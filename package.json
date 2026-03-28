@@ -1,0 +1,30 @@
+{
+  "name": "currentdao-contracts",
+  "version": "1.0.0",
+  "description": "CurrentDAO smart contracts for Soroban",
+  "scripts": {
+    "build": "cargo build --target wasm32-unknown-unknown --release",
+    "build:token": "cd contracts/token && cargo build --target wasm32-unknown-unknown --release",
+    "build:escrow": "cd contracts/escrow && cargo build --target wasm32-unknown-unknown --release",
+    "build:dao": "cd contracts/dao && cargo build --target wasm32-unknown-unknown --release",
+    "build:analytics": "cd contracts/analytics && cargo build --target wasm32-unknown-unknown --release",
+    "build:all": "npm run build:token && npm run build:escrow && npm run build:dao && npm run build:analytics",
+    "test": "cargo test",
+    "test:analytics": "cargo test --package usage_analytics",
+    "deploy:token": "node scripts/deploy_token.js",
+    "deploy:escrow": "node scripts/deploy_escrow.js", 
+    "deploy:dao": "node scripts/deploy_dao.js",
+    "deploy:analytics": "ts-node scripts/deploy_usage_analytics.ts",
+    "deploy:all": "npm run deploy:token && npm run deploy:escrow && npm run deploy:dao && npm run deploy:analytics",
+    "clean": "cargo clean"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "soroban-client": "^2.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "soroban-client": "^2.0.0"
+  }
+}
